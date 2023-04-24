@@ -6,16 +6,54 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:17:12 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/24 11:46:43 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:21:56 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 
-void	send_error()
+int	check_other_result(t_parameters *so_long, int error)
 {
-	ft_printf("ERROR!\n");
-	exit (1);
+	if (so_long->collect < 1)
+		return (-1);
+	if (so_long->player != 1)
+		return (-1);
+	if (so_long->exit != 1)
+		return (-1);
+	return (error);
+}
+
+int	check_other(t_parameters *so_long, int error)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (so_long->map[i])
+	{
+		j = 0;
+		while(so_long->map[i][j])
+		{
+			// ft_printf("[i][j] : %c\n", so_long->map[i][j]);
+			if (so_long->map[i][j] == 'C')
+				so_long->collect = so_long->collect +1;
+			if (so_long->map[i][j] == 'P')
+				so_long->player = so_long->player +1;
+			if (so_long->map[i][j] == 'E')
+				so_long->exit = (so_long->exit +1);
+			if (so_long->map[i][j] == '0')
+				so_long->empty = so_long->empty +1;
+			j++;
+		}
+		i++;
+	}
+	// ft_printf("C %i\n",so_long->collect);
+	// ft_printf("P %i\n",so_long->player);
+	// ft_printf("E %i\n",so_long->exit);
+	// ft_printf("0 %i\n",so_long->empty);
+	error = check_other_result(so_long, error);
+	// ft_printf("error in other %i\n", error);
+	return (error);
 }
 
 int	check_edges(t_parameters *so_long, int error)
@@ -64,9 +102,11 @@ int	map_check(t_parameters *so_long)
 
 	error = 0;
 	error = check_size(so_long, error);
-	ft_printf("map check %i\n", error);
+	ft_printf("map check 1 %i\n", error);
 	error = check_edges(so_long, error);
-	ft_printf("map check %i\n", error);
+	ft_printf("map check 2 %i\n", error);
+	error = check_other(so_long, error);
+	ft_printf("map check 3 %i\n", error);
 	//check_map_validity();
 	if (error != 0)
 		send_error();

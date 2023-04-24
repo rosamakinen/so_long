@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 07:38:13 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/24 11:41:43 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:51:23 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_parameters
 	int		player;
 	int		collect;
 	int		exit;
+	int		empty; //DO I NEED THIS??
 	char	**map;
 	char	*map_str;
 }		t_parameters;
@@ -43,6 +44,10 @@ void	parse_map(int fd, t_parameters *so_long);
 int	map_check(t_parameters *so_long);
 int	check_size(t_parameters *so_long, int error);
 int	check_edges(t_parameters *so_long, int error);
+int	check_other(t_parameters *so_long, int error);
+int	check_other_result(t_parameters *so_long, int error);
+
+//errors
 void	send_error();
 
 #endif
