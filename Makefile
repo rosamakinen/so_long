@@ -6,12 +6,12 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/04/24 13:51:34 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/04/25 08:40:18 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-FILES = test map_check errors
+FILES = test map_check errors window_handle
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addsuffix .o, $(FILES))
 FLAGS = -Wall -Wextra -Werror

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:17:12 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/24 15:21:56 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:20:12 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	check_other(t_parameters *so_long, int error)
 		j = 0;
 		while(so_long->map[i][j])
 		{
-			// ft_printf("[i][j] : %c\n", so_long->map[i][j]);
 			if (so_long->map[i][j] == 'C')
 				so_long->collect = so_long->collect +1;
 			if (so_long->map[i][j] == 'P')
@@ -47,12 +46,7 @@ int	check_other(t_parameters *so_long, int error)
 		}
 		i++;
 	}
-	// ft_printf("C %i\n",so_long->collect);
-	// ft_printf("P %i\n",so_long->player);
-	// ft_printf("E %i\n",so_long->exit);
-	// ft_printf("0 %i\n",so_long->empty);
 	error = check_other_result(so_long, error);
-	// ft_printf("error in other %i\n", error);
 	return (error);
 }
 
@@ -63,18 +57,14 @@ int	check_edges(t_parameters *so_long, int error)
 
 	i = 0;
 	len = ft_strlen(so_long->map[i]) - 1;
-	//ft_printf("len : %i", len);
 	while (so_long->map[i] != NULL)
 	{
 		if (so_long->map[i][0] != '1')
 			return (-1);
-		//ft_printf("1st %c\n", so_long->map[i][0]);
 		if (so_long->map[i][len] != '1')
 			return (-2);
-		//ft_printf("2nd %c\n", so_long->map[i][len]);
 		if (so_long->map[0][i] != '1' && so_long->map[len][i] != '1')
 			return (-3);
-		//ft_printf("3rd %c\n", so_long->map[i][len]);
 		i++;
 	}
 	return (error);
