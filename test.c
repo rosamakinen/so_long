@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 07:26:18 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/25 14:21:31 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:07:03 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	parse_map(int fd, t_parameters *so_long)
 		ft_printf("%s\n", so_long->map[i]);
 		i++;
 	}
+	so_long->i = i;
 }
 
 int	open_file(char *str, t_parameters *so_long)
@@ -68,6 +69,7 @@ int	main(int argc, char **argv)
 	}
 	if (argc == 2)
 	{
+		so_long.filename = argv[1];
 		open_file(argv[1], &so_long);
 		map_check(&so_long);
 	}

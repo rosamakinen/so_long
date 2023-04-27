@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:17:12 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/25 14:20:12 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:19:41 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ int	map_check(t_parameters *so_long)
 	ft_printf("map check 2 %i\n", error);
 	error = check_other(so_long, error);
 	ft_printf("map check 3 %i\n", error);
-	//check_map_validity();
+	error = check_filename(so_long);
+	//error = check_path(so_long);
 	if (error != 0)
 		send_error();
 	return (0);

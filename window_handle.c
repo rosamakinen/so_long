@@ -13,16 +13,6 @@
 
 #include "test.h"
 
-// void	window_size(t_parameters *so_long)
-// {
-// 	size_t len;
-
-// 	len = ft_strlen(so_long->map[0]);
-// 	so_long->w_width = ft_strlen(so_long->map[0][0] * S_WIDTH);
-// 	so_long->w_width = ft_strlen(len * S_HEIGHT);
-
-// }
-
 void	place_tile(t_sprite *sprite, t_parameters *so_long, int x, int y)
 {
 	if (so_long->map[y][x] == '0')
@@ -71,9 +61,8 @@ void	window_handle(t_parameters *so_long)
 {
 	t_sprite sprite;
 
-	//window_size(so_long);
 	so_long->mlx_ptr = mlx_init();
-	so_long->win_ptr = mlx_new_window(so_long->mlx_ptr, 700, 700, "test_window");
+	so_long->win_ptr = mlx_new_window(so_long->mlx_ptr, so_long->i * 47, so_long->i * 47, "test_window");
 
 	ft_printf("jaahas");
 	draw_map(so_long, &sprite);

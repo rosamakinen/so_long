@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 07:38:13 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/25 14:28:16 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:17:49 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,18 @@ typedef struct s_parameters
 	void	*win_ptr;
 	int		w_width; //DO I NEED THIS??
 	int		w_height; //DO I NEED THIS??
+	int		player_x; //DO I NEED THIS??
+	int		player_y; //DO I NEED THIS??
 	int		player;
 	int		collect;
 	int		exit;
 	int		empty; //DO I NEED THIS??
+	int		c_check;
+	int		i;
 	char	**map;
+	char	**m_check;
 	char	*map_str;
+	char	*filename;
 }		t_parameters;
 
 typedef struct s_sprite
@@ -67,6 +73,7 @@ int	check_size(t_parameters *so_long, int error);
 int	check_edges(t_parameters *so_long, int error);
 int	check_other(t_parameters *so_long, int error);
 int	check_other_result(t_parameters *so_long, int error);
+int	check_filename(t_parameters *so_long);
 
 //errors
 void	send_error();
