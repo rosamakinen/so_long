@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 07:38:13 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/27 11:17:49 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/04/29 14:04:34 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,6 @@
 # define S_WIDTH 47
 # define S_HEIGHT 47
 
-typedef struct s_parameters
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		w_width; //DO I NEED THIS??
-	int		w_height; //DO I NEED THIS??
-	int		player_x; //DO I NEED THIS??
-	int		player_y; //DO I NEED THIS??
-	int		player;
-	int		collect;
-	int		exit;
-	int		empty; //DO I NEED THIS??
-	int		c_check;
-	int		i;
-	char	**map;
-	char	**m_check;
-	char	*map_str;
-	char	*filename;
-}		t_parameters;
-
 typedef struct s_sprite
 {
 	void	*player;
@@ -62,6 +42,29 @@ typedef struct s_sprite
 	int		s_width;
 	int		s_height;
 }		t_sprite;
+
+typedef struct s_parameters
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	int		player_x; //DO I NEED THIS??
+	int		player_y; //DO I NEED THIS??
+	int		previous_x;
+	int		previous_y;
+	int		player;
+	int		collect;
+	int		exit;
+	int		empty; //DO I NEED THIS??
+	int		c_check;
+	int		width;
+	int		height;
+	char	**map;
+	char	**m_check;
+	char	*map_str;
+	char	*filename;
+
+}		t_parameters;
+
 
 //map parsing
 int	open_file(char *str, t_parameters *so_long);
@@ -77,9 +80,17 @@ int	check_filename(t_parameters *so_long);
 
 //errors
 void	send_error();
+void	free_and_exit(t_parameters *so_long);
 
 //window
 void	window_handle(t_parameters *so_long);
-void	draw_map(t_parameters *so_long, t_sprite *sprite);
+void	draw_map(t_parameters *so_long);
+int		key_event(int keycode, t_parameters *so_long);
+
+//game
+void	up(t_parameters *so_long);
+void	down(t_parameters *so_long);
+void	left(t_parameters *so_long);
+void	right(t_parameters *so_long);
 
 #endif

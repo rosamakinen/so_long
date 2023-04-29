@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:27:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/27 13:16:55 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/04/29 08:40:23 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ int	check_filename(t_parameters *so_long)
 	char	*temp;
 	int		f_len;
 
-	//temp = malloc(sizeof(char) * 5);
 	len = ft_strlen(so_long->filename);
 	f_len = (len - 4);
 	ft_printf("i: %i\n", f_len);
-	//ft_strlcpy(temp, so_long->filename + f_len, 5);
 	temp = ft_substr(so_long->filename, f_len, 4);
 	ft_printf("temp: %s\n", temp);
 	if (ft_strcmp(temp, ".ber") != 0)
