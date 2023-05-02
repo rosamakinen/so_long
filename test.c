@@ -6,11 +6,17 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 07:26:18 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/29 14:12:33 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:55:12 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
+
+void	get_width(t_parameters *so_long)
+{
+	so_long->width = ft_strlen(so_long->map[0]);
+}
+
 
 void	parse_map(int fd, t_parameters *so_long)
 {
@@ -30,6 +36,7 @@ void	parse_map(int fd, t_parameters *so_long)
 	}
 	free(str);
 	so_long->map = ft_split(map_str, '\n');
+	get_width(so_long);
 	if (so_long->map == NULL)
 		exit (1);
 	while (so_long->map[i]) /// PRINTING THE MAP AGAIN!!!!!!
@@ -39,6 +46,7 @@ void	parse_map(int fd, t_parameters *so_long)
 	}
 	so_long->height = i;
 }
+
 
 int	open_file(char *str, t_parameters *so_long)
 {
@@ -55,12 +63,32 @@ int	open_file(char *str, t_parameters *so_long)
 	return (0);
 }
 
+void	initialize_struct(t_parameters *so_long)
+{
+	so_long->mlx_ptr = NULL;
+	so_long->win_ptr = NULL;
+	so_long->player_x = 0;
+	so_long->player_y = 0;
+	so_long->player = 0;
+	so_long->collect = 0;
+	so_long->exit = 0;
+	so_long->empty = 0;
+	so_long->c_check = 0;
+	so_long->width = 0;
+	so_long->height = 0;
+	so_long->count = 0;
+	so_long->map = NULL;
+	so_long->map_str = NULL;
+	so_long->filename = NULL;
+}
+
 int	main(int argc, char **argv)
 {
 	t_parameters	so_long;
 	int				i;
 
 	i = 0;
+	initialize_struct(&so_long);
 	if (argc != 2)
 	{
 		ft_printf("ERROR! invalid number of arguments");

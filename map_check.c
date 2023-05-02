@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:17:12 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/28 08:02:34 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:56:54 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	check_other(t_parameters *so_long, int error)
 				so_long->collect = so_long->collect +1;
 			if (so_long->map[i][j] == 'P')
 				so_long->player = so_long->player +1;
+			ft_printf("%i\n", so_long->player);
 			if (so_long->map[i][j] == 'E')
 				so_long->exit = (so_long->exit +1);
 			if (so_long->map[i][j] == '0')
@@ -46,6 +47,7 @@ int	check_other(t_parameters *so_long, int error)
 		}
 		i++;
 	}
+	ft_printf("%i\n", so_long->player);
 	error = check_other_result(so_long, error);
 	return (error);
 }
@@ -93,11 +95,14 @@ int	map_check(t_parameters *so_long)
 	error = 0;
 	error = check_size(so_long, error);
 	ft_printf("map check 1 %i\n", error);
-	error = check_edges(so_long, error);
+	error = check_chars(so_long, error);
 	ft_printf("map check 2 %i\n", error);
-	error = check_other(so_long, error);
+	error = check_edges(so_long, error);
 	ft_printf("map check 3 %i\n", error);
-	error = check_filename(so_long);
+	error = check_other(so_long, error);
+	ft_printf("map check 4 %i\n", error);
+	error = check_filename(so_long, error);
+	ft_printf("map check 5 %i\n", error);
 	//error = check_path(so_long);
 	if (error != 0)
 		send_error();

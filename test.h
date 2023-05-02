@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 07:38:13 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/29 14:04:34 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:56:21 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef struct s_parameters
 	void	*win_ptr;
 	int		player_x; //DO I NEED THIS??
 	int		player_y; //DO I NEED THIS??
-	int		previous_x;
-	int		previous_y;
 	int		player;
 	int		collect;
 	int		exit;
@@ -58,8 +56,9 @@ typedef struct s_parameters
 	int		c_check;
 	int		width;
 	int		height;
+	int		count;
 	char	**map;
-	char	**m_check;
+	char	**m_check; //DO I NEED THIS??
 	char	*map_str;
 	char	*filename;
 
@@ -69,6 +68,7 @@ typedef struct s_parameters
 //map parsing
 int	open_file(char *str, t_parameters *so_long);
 void	parse_map(int fd, t_parameters *so_long);
+void	initialize_struct(t_parameters *so_long);
 
 //map checking
 int	map_check(t_parameters *so_long);
@@ -76,13 +76,15 @@ int	check_size(t_parameters *so_long, int error);
 int	check_edges(t_parameters *so_long, int error);
 int	check_other(t_parameters *so_long, int error);
 int	check_other_result(t_parameters *so_long, int error);
-int	check_filename(t_parameters *so_long);
+int	check_filename(t_parameters *so_long, int error);
+int	check_chars(t_parameters *so_long, int error);
 
 //errors
 void	send_error();
 void	free_and_exit(t_parameters *so_long);
 
 //window
+void	get_width(t_parameters *so_long);
 void	window_handle(t_parameters *so_long);
 void	draw_map(t_parameters *so_long);
 int		key_event(int keycode, t_parameters *so_long);
