@@ -15,10 +15,8 @@
 
 int	key_event(int keycode, t_parameters *so_long)
 {
-	int i; ///REMOVE
 	int	x;
 	int	y;
-	i = 0; ///REMOVE
 	x = so_long->player_x;
 	y = so_long->player_y;
 	if (keycode == 53)
@@ -31,12 +29,6 @@ int	key_event(int keycode, t_parameters *so_long)
 		left(so_long);
 	else if (keycode == 2 || keycode == 124) //GO_RIGHT (x++)
 		right(so_long);
-	while (so_long->map[i]) /// PRINTING THE MAP AGAIN!!!!!!
-	{
-		ft_printf("%s\n", so_long->map[i]);
-		i++;
-	}
-	ft_printf("jaahas_key3\n");
 	return (0);
 }
 

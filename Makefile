@@ -6,12 +6,12 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/04/29 09:40:53 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/05/08 09:54:44 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-FILES = test map_check path_check errors window_handle game
+FILES = test map_check map_check_2 path_check errors window_handle game
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addsuffix .o, $(FILES))
 FLAGS = -Wall -Wextra -Werror

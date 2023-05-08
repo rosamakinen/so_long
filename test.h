@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 07:38:13 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/05/02 12:56:21 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:06:27 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,13 @@ int	check_other(t_parameters *so_long, int error);
 int	check_other_result(t_parameters *so_long, int error);
 int	check_filename(t_parameters *so_long, int error);
 int	check_chars(t_parameters *so_long, int error);
+int	check_path(t_parameters *so_long);
+int	path_checktrough(t_parameters *so_long, int x, int y);
+int check_exit(t_parameters *so_long, int x, int y);
+void	check_surroundings_y(t_parameters *so_long, int x, int y);
+void	check_surroundings_x(t_parameters *so_long, int x, int y);
+void	start_position(t_parameters *so_long);
+void	check_path2(t_parameters *so_long);
 
 //errors
 void	send_error();
@@ -94,5 +101,7 @@ void	up(t_parameters *so_long);
 void	down(t_parameters *so_long);
 void	left(t_parameters *so_long);
 void	right(t_parameters *so_long);
+void	exit_win(t_parameters *so_long);
+void	check_end(t_parameters *so_long);
 
 #endif
