@@ -6,38 +6,40 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:51:44 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/05/03 11:21:14 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:00:47 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "so_long.h"
 
-void	send_error()
+void	send_error(void)
 {
 	ft_printf("ERROR!\n");
 	exit (1);
 }
 
-void	free_and_exit(t_parameters *so_long)
+void	free_and_check(char *to_free, char *check)
 {
-	int i;
+	free(to_free);
+	if (!check)
+		exit (1);
+}
 
-	i = ft_strlen(*so_long->map);
-	while (i > 0)
-	{
-		free (so_long->map[i]);
-		i--;
-	}
-	free(so_long->map);
-	free(so_long->map_str);
+int	exit_button(t_parameters *so)
+{
+	free_and_exit(so);
+	return (0);
+}
+
+void	free_and_exit(t_parameters *so)
+{
+	mlx_destroy_window(so->mlx, so->win);
 	exit (0);
 }
 
-
-
-void	exit_win(t_parameters *so_long)
+void	exit_win(t_parameters *so)
 {
-	ft_printf("YAY! YAY! YAY! YOU W0N!");
-	mlx_destroy_window(so_long->mlx_ptr, so_long->win_ptr);
-	free_and_exit(so_long);
+	ft_printf("final steps: %i\n", so->count);
+	ft_printf("YAY! YAY! YAY! YOU W0N!\n");
+	free_and_exit(so);
 }

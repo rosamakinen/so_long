@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 08:17:13 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/21 10:36:00 by rmakinen         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:51:05 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ static char	*search_for_line(char *safe, int fd)
 		safe[0] = '\0';
 	}
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (buffer == NULL)
-		return (NULL);
 	bytes_read = 1;
 	while (bytes_read > 0)
 	{

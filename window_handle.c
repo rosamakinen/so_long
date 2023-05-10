@@ -1,101 +1,96 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_handle->c                                    :+:      :+:    :+:   */
+/*   window_handle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student->42->fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 07:52:28 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/25 14:41:50 by rmakinen         ###   ########->fr       */
+/*   Created: 2023/05/09 11:28:37 by rmakinen          #+#    #+#             */
+/*   Updated: 2023/05/09 14:52:47 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
 
-#include "test.h"
+void	place_tile2(t_parameters *so, int x, int y, char c)
+{
+	if (c == 'C')
+	{
+		mlx_put_image_to_window(so->mlx, so->win, so->p_em, \
+		(x * S_W), (y * S_H));
+		mlx_put_image_to_window(so->mlx, so->win, so->p_co, \
+		(x * S_W), (y * S_H));
+	}
+	if (c == 'E')
+	{
+		mlx_put_image_to_window(so->mlx, so->win, so->p_em, \
+		(x * S_W), (y * S_H));
+		mlx_put_image_to_window(so->mlx, so->win, so->p_exit, \
+		(x * S_W), (y * S_H));
+	}
+}
 
-int	key_event(int keycode, t_parameters *so_long)
+void	place_tile(t_parameters *so, int x, int y)
+{
+	if (so->map[y][x] == '0')
+		mlx_put_image_to_window(so->mlx, so->win, so->p_em, \
+		(x * S_W), (y * S_H));
+	if (so->map[y][x] == '1')
+		mlx_put_image_to_window(so->mlx, so->win, so->p_wall, \
+		(x * S_W), (y * S_H));
+	if (so->map[y][x] == 'P')
+	{
+		so->player_x = x;
+		so->player_y = y;
+		mlx_put_image_to_window(so->mlx, so->win, so->p_em, \
+		(x * S_W), (y * S_H));
+		mlx_put_image_to_window(so->mlx, so->win, so->p_pl, \
+		(x * S_W), (y * S_H));
+	}
+	if (so->map[y][x] == 'C')
+		place_tile2(so, x, y, 'C');
+	if (so->map[y][x] == 'E')
+		place_tile2(so, x, y, 'E');
+}
+
+void	init_tiles(t_parameters *so)
+{
+	so->s_w = S_W;
+	so->s_w = S_H;
+	so->p_em = mlx_xpm_file_to_image(so->mlx, EMPTY, &so->s_w, &so->s_h);
+	so->p_pl = mlx_xpm_file_to_image(so->mlx, PLAYER, &so->s_w, &so->s_h);
+	so->p_co = mlx_xpm_file_to_image(so->mlx, COLLECT, &so->s_w, &so->s_h);
+	so->p_wall = mlx_xpm_file_to_image(so->mlx, WALL, &so->s_w, &so->s_h);
+	so->p_exit = mlx_xpm_file_to_image(so->mlx, EXIT, &so->s_w, &so->s_h);
+}
+
+void	draw_map(t_parameters *so)
 {
 	int	x;
 	int	y;
-	x = so_long->player_x;
-	y = so_long->player_y;
-	if (keycode == 53)
-		free_and_exit(so_long);
-	else if (keycode == 13 || keycode == 126) //GO_UP (y--) maybe instead of changing the position of the player change the map??
-		up(so_long);
-	else if (keycode == 1 || keycode == 125) //GO_DOWN (y++)
-		down(so_long);
-	else if (keycode == 0 || keycode == 123) //GO_LEFT (x--)ç
-		left(so_long);
-	else if (keycode == 2 || keycode == 124) //GO_RIGHT (x++)
-		right(so_long);
-	return (0);
-}
-
-void	place_tile(t_sprite *sprite, t_parameters *so_long, int x, int y)
-{
-	if (so_long->map[y][x] == '0')
-		mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, sprite->empty, (x * S_WIDTH), (y * S_HEIGHT));
-	if (so_long->map[y][x] == '1')
-		mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, sprite->wall, (x * S_WIDTH), (y * S_HEIGHT));
-	if (so_long->map[y][x] == 'P')
-	{
-		so_long->player_x = x;
-		so_long->player_y = y;
-		mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, sprite->empty, (x * S_WIDTH), (y * S_HEIGHT));
-		mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, sprite->player, (x * S_WIDTH), (y * S_HEIGHT));
-	}
-	if (so_long->map[y][x] == 'C')
-	{
-		mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, sprite->empty, (x * S_WIDTH), (y * S_HEIGHT));
-		mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, sprite->collect, (x * S_WIDTH), (y * S_HEIGHT));
-	}
-	if (so_long->map[y][x] == 'E')
-	{
-		mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, sprite->empty, (x * S_WIDTH), (y * S_HEIGHT));
-		mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, sprite->exit, (x * S_WIDTH), (y * S_HEIGHT));
-	}
-}
-
-void	init_tiles(t_sprite *sprite, t_parameters *so_long)
-{
-	sprite->s_width = S_WIDTH;
-	sprite->s_height = S_HEIGHT;
-	sprite->empty = mlx_xpm_file_to_image(so_long->mlx_ptr, EMPTY, &sprite->s_width, &sprite->s_height);
-	sprite->player = mlx_xpm_file_to_image(so_long->mlx_ptr, PLAYER, &sprite->s_width, &sprite->s_height);
-	sprite->collect = mlx_xpm_file_to_image(so_long->mlx_ptr, COLLECT, &sprite->s_width, &sprite->s_height);
-	sprite->wall = mlx_xpm_file_to_image(so_long->mlx_ptr, WALL, &sprite->s_width, &sprite->s_height);
-	sprite->exit = mlx_xpm_file_to_image(so_long->mlx_ptr, EXIT, &sprite->s_width, &sprite->s_height);
-}
-
-void	draw_map(t_parameters *so_long)
-{
-	int x;
-	int y;
-	t_sprite sprite;
 
 	y = 0;
-	init_tiles(&sprite, so_long);
-	while (so_long->map[y])
+	init_tiles(so);
+	while (so->map[y])
 	{
 		x = 0;
-		while (so_long->map[y][x])
+		while (so->map[y][x])
 		{
-			place_tile(&sprite, so_long, x, y);
+			place_tile(so, x, y);
 			x++;
 		}
 	y++;
 	}
 }
 
-void	window_handle(t_parameters *so_long)
+void	window_handle(t_parameters *so)
 {
-	ft_printf("w: %i, h: %i", so_long->width, so_long->height);
-	so_long->mlx_ptr = mlx_init();
-	so_long->win_ptr = mlx_new_window(so_long->mlx_ptr, so_long->width * 47, so_long->height * 47, "test_window");
-	so_long->count = 0;
-
-	draw_map(so_long);
-	mlx_hook(so_long->win_ptr, 2, 1L<<0, key_event, so_long);
-	mlx_loop(so_long->mlx_ptr);
+	so->mlx = mlx_init();
+	so->win = mlx_new_window(so->mlx, so->width * 47, so->height * 47, \
+	"test_window");
+	so->count = 0;
+	draw_map(so);
+	mlx_hook(so->win, 2, 1L << 0, &key_event, so);
+	mlx_hook(so->win, 17, 1L << 17, &exit_button, so);
+	mlx_loop(so->mlx);
 }
