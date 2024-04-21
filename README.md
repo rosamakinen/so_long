@@ -1,5 +1,5 @@
 # so_long
-So_long is a small 2D top-down game made with C and graphics library called minilibx.
+So_long is a 2D top-down game made with C and graphics library called minilibx.
 
 <img width="939" alt="Screen Shot 2023-10-23 at 1 39 56 PM" src="https://github.com/rosamakinen/so_long/assets/112611789/b73b4246-cd3f-4095-81a5-90766ca972c5">
 
@@ -14,7 +14,7 @@ This project focuses on creating a 2D game called "so_long". The objective of th
 - [x] :earth_americas: Map parsing and error handling
 - [x] :video_game: Basic 2D game mechanics
 - [x] :memo: Graphcs rendering using Minilibx
-- [x] :moneybag: Player movement, collectibles and exit
+- [x] :moneybag: Player movement using key bindings, collectibles, and exit, that activates after coins are collected
 - [x] :checkered_flag: Counter to track the player moves
 
 ## :rocket: Getting Started
