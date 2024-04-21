@@ -7,7 +7,7 @@ In so_long you play as the treasure chest trying to find all the golden coins th
 
 ## :computer: About
 
-This projectfocuses on creating a simple 2D game called "so_long" The objective of this project is to gain a better understanding of fundamental concepts such as graphics rendering with sprites, 2D game mechanics, and file parsing.
+This project focuses on creating a 2D game called "so_long". The objective of this project is to gain a better understanding of fundamental concepts such as graphics rendering with sprites, 2D game mechanics, and file parsing.
 
 
 ## :space_invader: Features
