@@ -21,7 +21,7 @@
 # define S_W 47
 # define S_H 47
 
-# include <mlx.h>
+
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <fcntl.h>
@@ -29,6 +29,7 @@
 # include "./libft/includes/ft_printf.h"
 # include "./libft/includes/get_next_line.h"
 # include "./libft/includes/get_next_line_bonus.h"
+# include "./mlx/mlx.h"
 
 typedef struct s_parameters
 {

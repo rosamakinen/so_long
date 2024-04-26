@@ -22,11 +22,9 @@ void	up(t_parameters *so)
 {
 	int		x;
 	int		y;
-	char	*str;
 
 	x = so->player_x;
 	y = so->player_y;
-	str = NULL;
 	if (so->map[y - 1][x] == 'C' || so->map[y - 1][x] == '0' )
 	{
 		if (so->map[y - 1][x] == 'C')

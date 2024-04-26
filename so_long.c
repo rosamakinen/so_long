@@ -94,9 +94,7 @@ void	initialize_struct(t_parameters *so)
 int	main(int argc, char **argv)
 {
 	t_parameters	so;
-	int				i;
 
-	i = 0;
 	initialize_struct(&so);
 	if (argc != 2)
 	{

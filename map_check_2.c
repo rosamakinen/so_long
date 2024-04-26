@@ -76,11 +76,7 @@ int	check_filename(t_parameters *so, int error)
 
 int	key_event(int keycode, t_parameters *so)
 {
-	int	x;
-	int	y;
 
-	x = so->player_x;
-	y = so->player_y;
 	if (keycode == 53)
 		free_and_exit(so);
 	else if (keycode == 13 || keycode == 126)
