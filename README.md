@@ -37,6 +37,7 @@ For example, the map for the rendered game above looks like this. 
 Map checking tests that all collectibles and the exit are reachable with a flood-fill -algorithm. Other checks are for example that there is only one player and one exit, the game area is surrounded by walls, and no extra characters on the map.
 
 ## :rocket: Getting Started
+** this version has been tested with clang version 15.0.0 (clang-1500.1.0.2.5) and MacOS Ventura 13.5 ** 
 
 To get started with the "so_long" project, follow these steps:
 
