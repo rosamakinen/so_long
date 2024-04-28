@@ -19,7 +19,7 @@ This project focuses on creating a 2D game called "so_long". The objective of th
 - [x] :checkered_flag: Counter to track the player moves
 
 
-## 🆘: Maps and error checking
+## 🆘 Maps and map validation
 
 <img width="300" alt="Screenshot 2024-04-28 at 20 50 54" src="https://github.com/rosamakinen/so_long/assets/112611789/9dd143a8-32a9-403d-b67d-e74bee36d466"> <br>
 For example, the map for the rendered game above looks like this. 
